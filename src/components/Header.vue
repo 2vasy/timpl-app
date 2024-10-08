@@ -1,63 +1,59 @@
 <template>
     <header class="header">
-      <div class="logo-container">
-        <div class="logo">
-          <img src="@/assets/logo.png" alt="Timpl Logo" />
+        <div class="logo-container">
+            <div class="logo">
+                <img src="@/assets/logo.png" alt="Timpl Logo" />
+            </div>
         </div>
-      </div>
-      <div class="language-switcher">
-        <div class="selected-language" @click="toggleDropdown">
-          <span>{{ formattedLanguage }}</span>
-          <img class="arrow" src="@/assets/angle-down.png" alt="Dropdown Arrow" />
+        <div class="language-switcher">
+            <div class="selected-language" @click="toggleDropdown">
+                <span>{{ formattedLanguage }}</span>
+                <img class="arrow" src="@/assets/angle-down.png" alt="Dropdown Arrow" />
+            </div>
+            <ul v-if="dropdownOpen" class="language-options">
+                <li v-for="lang in languages" :key="lang" @click="selectLanguage(lang)"
+                    :class="{ active: lang === selectedLanguage }">
+                    {{ lang.charAt(0).toUpperCase() + lang.slice(1).toLowerCase() }}
+                </li>
+            </ul>
         </div>
-        <ul v-if="dropdownOpen" class="language-options">
-          <li
-            v-for="lang in languages"
-            :key="lang"
-            @click="selectLanguage(lang)"
-            :class="{ active: lang === selectedLanguage }"
-          >
-            {{ lang.charAt(0).toUpperCase() + lang.slice(1).toLowerCase() }}
-          </li>
-        </ul>
-      </div>
-      <div class="swen-marquee">
-        <marquee class="swen-text">
-          Part of the profit goes to SWEN, By leaving a tip, you take care of nature
-        </marquee>
-        <div class="swen-logo-container">
-          <img src="@/assets/Frame 15485.svg" alt="SWEN Logo" class="swen-logo" />
+        <div class="swen-marquee">
+            <marquee class="swen-text">
+                Part of the profit goes to SWEN, By leaving a tip, you take care of nature
+            </marquee>
+            <div class="swen-logo-container">
+                <img src="@/assets/Frame 15485.svg" alt="SWEN Logo" class="swen-logo" />
+            </div>
         </div>
-      </div>
     </header>
-  </template>
-  
-  <script setup>
-  import { ref, computed } from 'vue';
-  import { useI18n } from 'vue-i18n';
-  
-  const { locale } = useI18n();
-  const selectedLanguage = ref(locale.value);
-  const dropdownOpen = ref(false);
-  const languages = ['en', 'de', 'fr'];
-  
-  const toggleDropdown = () => {
+</template>
+
+<script setup>
+import { ref, computed } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+const { locale } = useI18n();
+const selectedLanguage = ref(locale.value);
+const dropdownOpen = ref(false);
+const languages = ['en', 'de', 'fr'];
+
+const toggleDropdown = () => {
     dropdownOpen.value = !dropdownOpen.value;
-  };
-  
-  const selectLanguage = (lang) => {
+};
+
+const selectLanguage = (lang) => {
     selectedLanguage.value = lang;
     locale.value = lang;
     dropdownOpen.value = false;
-  };
-  
-  const formattedLanguage = computed(() => {
+};
+
+const formattedLanguage = computed(() => {
     return selectedLanguage.value.charAt(0).toUpperCase() + selectedLanguage.value.slice(1).toLowerCase();
-  });
-  </script>
-  
-  <style scoped>
-  .header {
+});
+</script>
+
+<style scoped>
+.header {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -65,30 +61,30 @@
     background-color: #fff;
     position: relative;
     border-bottom: 1px solid #e0e0e0;
-  }
-  
-  .logo-container {
+}
+
+.logo-container {
     display: flex;
     justify-content: center;
     width: 100%;
-  }
-  
-  .logo {
+}
+
+.logo {
     display: flex;
     align-items: center;
-  }
-  
-  .logo img {
+}
+
+.logo img {
     height: 24px;
-  }
-  
-  .language-switcher {
+}
+
+.language-switcher {
     position: absolute;
     right: 20px;
     top: 10px;
-  }
-  
-  .selected-language {
+}
+
+.selected-language {
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -99,15 +95,15 @@
     background: none;
     padding: 5px 10px;
     user-select: none;
-  }
-  
-  .arrow {
+}
+
+.arrow {
     margin-left: 5px;
     width: 24px;
     height: 24px;
-  }
-  
-  .language-options {
+}
+
+.language-options {
     position: absolute;
     right: 0;
     top: calc(100% + 5px);
@@ -120,21 +116,21 @@
     list-style: none;
     padding: 0;
     margin: 0;
-  }
-  
-  .language-options li {
+}
+
+.language-options li {
     padding: 8px;
     cursor: pointer;
     text-align: center;
     transition: background-color 0.2s;
-  }
-  
-  .language-options li.active,
-  .language-options li:hover {
+}
+
+.language-options li.active,
+.language-options li:hover {
     background-color: #f0f0f0;
-  }
-  
-  .swen-marquee {
+}
+
+.swen-marquee {
     position: relative;
     display: flex;
     align-items: center;
@@ -144,17 +140,17 @@
     border-radius: 5px;
     margin-top: 10px;
     overflow: hidden;
-  }
-  
-  .swen-text {
+}
+
+.swen-text {
     font-family: 'Manrope', sans-serif;
     font-size: 14px;
     font-weight: 500;
     color: #000;
     white-space: nowrap;
-  }
-  
-  .swen-logo-container {
+}
+
+.swen-logo-container {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -164,10 +160,9 @@
     width: 44px;
     height: 44px;
     background: none;
-  }
-  
-  .swen-logo {
+}
+
+.swen-logo {
     height: 24px;
-  }
-  </style>
-  
+}
+</style>
