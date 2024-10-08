@@ -23,14 +23,11 @@ const showSwenPopup = ref(false);
 
 <style>
 .app-container {
-  max-width: 400px;
+  max-width: 375px;
   margin: 0 auto;
-  padding: 20px;
+}
+@media (max-width: 600px) {
+
 }
 
-@media (max-width: 600px) {
-  .app-container {
-    padding: 10px;
-  }
-}
 </style>
