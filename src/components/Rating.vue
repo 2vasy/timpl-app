@@ -87,6 +87,12 @@ const setRating = (star) => {
   height: 28.69px;
   transition: all 0.2s ease;
   filter: grayscale(100%);
+  -webkit-tap-highlight-color: transparent;
+  background: none; 
+  box-shadow: none; 
+  user-select: none;
+  outline: none;
+  pointer-events: auto;
 }
 
 .star:focus-visible {
@@ -96,6 +102,7 @@ const setRating = (star) => {
 .star.active {
   filter: grayscale(0%); 
   fill: #7f56d9; 
+  background-color: transparent;
 }
 
 .star:hover {

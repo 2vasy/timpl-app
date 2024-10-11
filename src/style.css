@@ -9,6 +9,21 @@
   box-sizing: border-box;
 }
 
+/* Убираем подсветку при клике для всех элементов */
+* {
+  -webkit-tap-highlight-color: transparent; /* Для мобильных браузеров */
+  -webkit-focus-ring-color: transparent; /* Убираем подсветку фокуса */
+  outline: none; /* Убираем обводку при фокусе */
+}
+
+/* Убираем выделение текста при клике */
+body, img, input, button {
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+}
+
 /* Задаем базовые стили для body */
 body {
   font-family: 'Manrope', sans-serif;
