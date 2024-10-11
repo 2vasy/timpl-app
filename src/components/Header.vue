@@ -64,7 +64,6 @@ const formattedLanguage = computed(() => {
   padding: 10px 20px;
   background-color: #fff;
   position: relative;
-  border-bottom: 1px solid #e0e0e0;
 }
 
 .logo-container {
