@@ -2,7 +2,8 @@
   <div id="app" class="app-container">
     <Header />
     <TipInput />
-    <Rating />
+    <Rating title="Rate your experience" />
+    <Rating title="Rate Service" />
     <Feedback />
     <PaymentMethods />
     <SwenPopup v-if="showSwenPopup" @close="showSwenPopup = false" />
