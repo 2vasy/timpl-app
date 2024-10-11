@@ -28,7 +28,7 @@
           @click="setTipAmount(amount)"
           class="quick-tip-button"
         >
-          {{ amount }}€
+          {{ amount }}
         </button>
       </div>
     </div>
