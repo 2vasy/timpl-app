@@ -6,11 +6,11 @@
     </div>
     <div class="payment-buttons">
       <!-- Кнопка с текстом "Pay with" перед иконкой -->
-      <button class="apple-pay-button" @click="payWith('apple-pay')">
+      <button class="apple-pay-button" @click="handlePayClick('apple-pay')">
         <span>Pay with</span>
         <img src="@/assets/pay.svg" alt="Apple Pay" class="pay-icon" />
       </button>
-      <button class="debit-card-button" @click="payWith('card')">
+      <button class="debit-card-button" @click="handlePayClick('card')">
         Pay with debit card
       </button>
     </div>
@@ -22,8 +22,9 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
+import { defineProps, defineEmits } from 'vue';
 
+// Принимаем данные через пропсы
 const props = defineProps({
   amount: {
     type: Number,
@@ -35,8 +36,16 @@ const props = defineProps({
   },
 });
 
-const payWith = (method) => {
-  alert(`Payment method selected: ${method}. Total to pay: ${(props.amount + Number(props.serviceFee)).toFixed(2)}€`);
+// Поднимаем событие showSwenPopup вверх
+const emit = defineEmits(['showSwenPopup']);
+
+// Логика клика на кнопку оплаты
+const handlePayClick = (method) => {
+  // Логика оплаты, если нужно
+  console.log(`Selected payment method: ${method}`);
+
+  // Открываем всплывающее окно
+  emit('showSwenPopup');
 };
 </script>
 
