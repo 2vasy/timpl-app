@@ -53,8 +53,6 @@ const setTipAmount = (amount) => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #f9f9f9;
-  border-radius: 10px;
   max-width: 478px;
   margin: 0 auto;
 }

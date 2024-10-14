@@ -61,7 +61,7 @@ const formattedLanguage = computed(() => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px 20px;
+  padding: 10px 0 0;
   background-color: #fff;
   position: relative;
 }
@@ -111,7 +111,7 @@ const formattedLanguage = computed(() => {
   right: 0;
   top: calc(100% + 5px);
   background: #fff;
-  border: 1px solid #ccc;
+  border: 1px solid;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   width: 80px;
