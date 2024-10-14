@@ -2,7 +2,7 @@
   <div class="tip-input-container">
     <!-- Слайдер официантов -->
     <WaiterSlider @waiter-selected="selectedWaiter = $event" />
-    
+
     <!-- Поле для ввода чаевых -->
     <div class="tip-input">
       <div class="input-container">
@@ -11,7 +11,7 @@
           <input
             id="tip-amount"
             type="number"
-            v-model="tipAmount"
+            v-model="internalTipAmount"
             placeholder="0"
             min="0"
             class="tip-input-field"
@@ -19,7 +19,7 @@
           <span class="currency">€</span>
         </div>
       </div>
-      
+
       <!-- Быстрые кнопки выбора суммы чаевых -->
       <div class="quick-tip-buttons">
         <button
@@ -28,7 +28,7 @@
           @click="setTipAmount(amount)"
           class="quick-tip-button"
         >
-          {{ amount }}
+          {{ amount }}€
         </button>
       </div>
     </div>
@@ -36,15 +36,28 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, watch, defineProps, defineEmits } from 'vue';
 import WaiterSlider from './WaiterSlider.vue';
 
-const tipAmount = ref(0);
+// Получаем чаевые через пропс
+const props = defineProps({
+  tipAmount: Number,
+});
+
+// Двусторонняя привязка чаевых
+const emit = defineEmits(['update:tipAmount']);
+const internalTipAmount = ref(props.tipAmount || 0);
+
 const selectedWaiter = ref('Madison');
 const quickTipAmounts = [2, 5, 100];
 
+// Следим за изменением внутренней суммы чаевых и отправляем изменение в родительский компонент
+watch(internalTipAmount, (newValue) => {
+  emit('update:tipAmount', newValue);
+});
+
 const setTipAmount = (amount) => {
-  tipAmount.value = amount;
+  internalTipAmount.value = amount;
 };
 </script>
 

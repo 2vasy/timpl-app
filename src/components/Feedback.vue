@@ -130,7 +130,6 @@ h3.title {
 
 textarea {
   width: 100%;
-  height: 100%;
   padding: 16px;
   border-radius: 10px;
   border: 1px solid transparent;
