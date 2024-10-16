@@ -1,8 +1,8 @@
 <template>
-  <div class="swen-popup">
-    <div class="popup-content">
+  <div v-if="isVisible" class="swen-popup" :class="{ hide: isClosing }">
+    <div class="popup-content" :class="{ hide: isClosing }">
       <!-- Кнопка закрытия -->
-      <button class="close-icon" @click="$emit('close')">
+      <button class="close-icon" @click="closePopup">
         <img src="@/assets/close.svg" alt="Close" />
       </button>
 
@@ -14,13 +14,25 @@
       <p>By leaving a tip, you take care of nature.</p>
       
       <!-- Кнопка Learn more -->
-      <button @click="$emit('close')" class="close-btn">Learn more about SWEN</button>
+      <button @click="closePopup" class="close-btn">Learn more about SWEN</button>
     </div>
   </div>
 </template>
 
 <script setup>
+import { ref } from 'vue';
+
 const emit = defineEmits(['close']);
+const isVisible = ref(true); // Виден ли popup
+const isClosing = ref(false); // Запущена ли анимация закрытия
+
+// Функция закрытия popup с анимацией
+const closePopup = () => {
+  isClosing.value = true;
+  setTimeout(() => {
+    emit('close'); // Уведомляем родительский компонент после завершения анимации
+  }, 500); // Время соответствует длительности анимации закрытия
+};
 </script>
 
 <style scoped>
@@ -30,10 +42,11 @@ const emit = defineEmits(['close']);
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5); 
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: popup-fade-in 0.5s ease forwards;
 }
 
 .popup-content {
@@ -45,8 +58,79 @@ const emit = defineEmits(['close']);
   width: 100%;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   position: relative;
+  animation: slide-up 0.5s ease forwards;
 }
 
+.swen-popup.hide {
+  animation: popup-fade-out 0.5s ease forwards;
+}
+
+.popup-content.hide {
+  animation: slide-down 0.5s ease forwards;
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-down {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes popup-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes popup-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Кнопка закрытия */
+.close-icon {
+  position: absolute;
+  top: 33px;
+  right: 33px;
+  background: #fff;
+  border: none;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.close-icon img {
+  width: 12.01px;
+  height: 12.01px;
+}
+
+/* Контент окна */
 .swen-image {
   width: 100%;
   margin-bottom: 20px;
@@ -77,27 +161,5 @@ p {
   border-radius: 8px;
   cursor: pointer;
   width: 100%;
-}
-
-/* Кнопка закрытия */
-.close-icon {
-  position: absolute;
-  top: 33px; 
-  right: 33px; 
-  background: #fff;
-  border: none;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  cursor: pointer;
-  gap: 10px;
-}
-
-.close-icon img {
-  width: 12.01px; 
-  height: 12.01px; 
 }
 </style>
