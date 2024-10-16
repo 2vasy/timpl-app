@@ -5,14 +5,14 @@
       <div
         v-for="(emoji, index) in emojis"
         :key="index"
-        @click="selectEmoji(index)"
-        :class="{ selected: selectedEmoji === index }"
+        @click="toggleEmojiSelection(index)"
+        :class="{ selected: selectedEmojis.includes(index) }"
         class="emoji-wrapper"
       >
         <div class="emoji-container">
           <img :src="emoji.icon" :alt="emoji.name" class="emoji-icon" />
         </div>
-        <span class="emoji-label" :class="{ active: selectedEmoji === index }">{{ emoji.name }}</span>
+        <span class="emoji-label" :class="{ active: selectedEmojis.includes(index) }">{{ emoji.name }}</span>
       </div>
     </div>
 
@@ -47,12 +47,17 @@ const emojis = ref([
   }
 ]);
 
-const selectedEmoji = ref(null); // Храним индекс выбранного эмодзи
+const selectedEmojis = ref([]); // Храним индексы выбранных эмодзи
 const feedbackText = ref('');
 
-// Функция выбора эмодзи
-const selectEmoji = (index) => {
-  selectedEmoji.value = index;
+// Функция переключения выбора эмодзи
+const toggleEmojiSelection = (index) => {
+  const emojiIndex = selectedEmojis.value.indexOf(index);
+  if (emojiIndex === -1) {
+    selectedEmojis.value.push(index); // Добавляем эмодзи, если она не выбрана
+  } else {
+    selectedEmojis.value.splice(emojiIndex, 1); // Убираем эмодзи, если она уже выбрана
+  }
 };
 </script>
 
@@ -138,3 +143,4 @@ textarea {
   resize: none;
 }
 </style>
+
