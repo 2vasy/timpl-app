@@ -47,16 +47,16 @@ const emojis = ref([
   }
 ]);
 
-const selectedEmojis = ref([]); // Храним индексы выбранных эмодзи
+const selectedEmojis = ref([]); 
 const feedbackText = ref('');
 
 // Функция переключения выбора эмодзи
 const toggleEmojiSelection = (index) => {
   const emojiIndex = selectedEmojis.value.indexOf(index);
   if (emojiIndex === -1) {
-    selectedEmojis.value.push(index); // Добавляем эмодзи, если она не выбрана
+    selectedEmojis.value.push(index); 
   } else {
-    selectedEmojis.value.splice(emojiIndex, 1); // Убираем эмодзи, если она уже выбрана
+    selectedEmojis.value.splice(emojiIndex, 1); 
   }
 };
 </script>
@@ -65,12 +65,13 @@ const toggleEmojiSelection = (index) => {
 .feedback {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Центрируем содержимое */
+  align-items: center; 
   border-radius: 16px;
   padding: 20px 0 0;
-  width: 100%; /* Ширина 100% родителя */
-  max-width: 335px; /* Максимальная ширина контейнера */
-  margin: 0 auto; /* Центрируем весь контейнер */
+  width: 100%; 
+  max-width: 335px;
+  margin: 0 auto; 
+  cursor: pointer;
 }
 
 h3.title {
