@@ -1,19 +1,12 @@
 <template>
   <div v-if="isVisible" class="swen-popup" :class="{ hide: isClosing }">
     <div class="popup-content" :class="{ hide: isClosing }">
-      <!-- Кнопка закрытия -->
       <button class="close-icon" @click="closePopup">
         <img src="@/assets/close.svg" alt="Close" />
       </button>
-
-      <!-- Картинка из макета -->
       <img src="@/assets/Carbon Neutral Challenger.png" alt="SWEN" class="swen-image" />
-
-      <!-- Текст контента -->
       <h3>Profit goes to SWEN</h3>
       <p>By leaving a tip, you take care of nature.</p>
-      
-      <!-- Кнопка Learn more -->
       <button @click="closePopup" class="close-btn">Learn more about SWEN</button>
     </div>
   </div>
@@ -23,15 +16,15 @@
 import { ref } from 'vue';
 
 const emit = defineEmits(['close']);
-const isVisible = ref(true); // Виден ли popup
-const isClosing = ref(false); // Запущена ли анимация закрытия
+const isVisible = ref(true);
+const isClosing = ref(false);
 
-// Функция закрытия popup с анимацией
+
 const closePopup = () => {
   isClosing.value = true;
   setTimeout(() => {
-    emit('close'); // Уведомляем родительский компонент после завершения анимации
-  }, 500); // Время соответствует длительности анимации закрытия
+    emit('close');
+  }, 500);
 };
 </script>
 
@@ -74,6 +67,7 @@ const closePopup = () => {
     transform: translateY(100%);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -85,6 +79,7 @@ const closePopup = () => {
     transform: translateY(0);
     opacity: 1;
   }
+
   to {
     transform: translateY(-100%);
     opacity: 0;
@@ -95,6 +90,7 @@ const closePopup = () => {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -104,12 +100,13 @@ const closePopup = () => {
   from {
     opacity: 1;
   }
+
   to {
     opacity: 0;
   }
 }
 
-/* Кнопка закрытия */
+
 .close-icon {
   position: absolute;
   top: 33px;
@@ -130,7 +127,7 @@ const closePopup = () => {
   height: 12.01px;
 }
 
-/* Контент окна */
+
 .swen-image {
   width: 100%;
   margin-bottom: 20px;

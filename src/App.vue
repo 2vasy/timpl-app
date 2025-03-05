@@ -5,11 +5,8 @@
     <Rating title="Rate your experience" />
     <Rating title="Rate Service" />
     <Feedback />
-    <PaymentMethods 
-      :amount="tipAmount" 
-      :serviceFee="serviceFee"
-      @showSwenPopup="showSwenPopup = true" 
-    />
+    <PaymentMethods :amount="tipAmount" :serviceFee="serviceFee"
+      @showSwenPopup="showSwenPopup = true" />
     <SwenPopup v-if="showSwenPopup" @close="showSwenPopup = false" />
   </div>
 </template>
@@ -25,10 +22,10 @@ import SwenPopup from './components/SwenPopup.vue';
 
 const showSwenPopup = ref(false);
 
-// Сумма чаевых
+
 const tipAmount = ref(0);
 
-// Рассчет комиссии (например, 1.2%)
+
 const serviceFee = computed(() => {
   return parseFloat((tipAmount.value * 0.012).toFixed(2));
 });

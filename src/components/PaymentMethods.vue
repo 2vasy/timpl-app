@@ -5,7 +5,7 @@
       <p>Service fees {{ serviceFee }}€</p>
     </div>
     <div class="payment-buttons">
-      <!-- Кнопка с текстом "Pay with" перед иконкой -->
+
       <button class="apple-pay-button" @click="handlePayClick('apple-pay')">
         <span>Pay with</span>
         <img src="@/assets/pay.svg" alt="Apple Pay" class="pay-icon" />
@@ -24,7 +24,7 @@
 <script setup>
 import { defineProps, defineEmits } from 'vue';
 
-// Принимаем данные через пропсы
+
 const props = defineProps({
   amount: {
     type: Number,
@@ -36,15 +36,14 @@ const props = defineProps({
   },
 });
 
-// Поднимаем событие showSwenPopup вверх
 const emit = defineEmits(['showSwenPopup']);
 
-// Логика клика на кнопку оплаты
+
 const handlePayClick = (method) => {
-  // Логика оплаты, если нужно
+
   console.log(`Selected payment method: ${method}`);
 
-  // Открываем всплывающее окно
+о
   emit('showSwenPopup');
 };
 </script>
@@ -89,7 +88,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px; /* Отступ между текстом и иконкой */
+  gap: 8px; 
 }
 
 .apple-pay-button span {

@@ -157,7 +157,7 @@ const formattedLanguage = computed(() => {
 
 .swen-logo-container {
   position: relative;
-  z-index: 1; /* Логотип всегда сверху */
+  z-index: 1; 
 }
 
 .swen-logo {

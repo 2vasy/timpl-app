@@ -16,7 +16,7 @@
       </div>
     </div>
 
-    <!-- Новый div для текстовой области и заголовка -->
+
     <div class="feedback-text">
       <h3 class="title">Share your feedback</h3>
       <textarea placeholder="Describe your own feedback" v-model="feedbackText"></textarea>
@@ -27,7 +27,7 @@
 <script setup>
 import { ref } from 'vue';
 
-// Иконки и их описание
+
 const emojis = ref([
   {
     name: 'Service',
@@ -50,7 +50,7 @@ const emojis = ref([
 const selectedEmojis = ref([]); 
 const feedbackText = ref('');
 
-// Функция переключения выбора эмодзи
+
 const toggleEmojiSelection = (index) => {
   const emojiIndex = selectedEmojis.value.indexOf(index);
   if (emojiIndex === -1) {
@@ -107,7 +107,7 @@ h3.title {
 }
 
 .emoji-wrapper.selected .emoji-container {
-  background-color: #7f56d9; /* Подсветка только фона иконки */
+  background-color: #7f56d9; 
 }
 
 .emoji-icon {
@@ -117,21 +117,21 @@ h3.title {
 
 .emoji-label {
   font-family: 'Manrope', sans-serif;
-  font-size: 12px; /* Размер текста 12px */
+  font-size: 12px; 
   font-weight: 500;
-  color: #000; /* По умолчанию черный цвет */
+  color: #000;
   transition: color 0.3s ease;
 }
 
 .emoji-label.active {
-  color: #7f56d9; /* Фиолетовый цвет при клике */
+  color: #7f56d9; 
 }
 
 .feedback-text {
-  width: 100%; /* Ширина 100% для адаптивности */
-  max-width: 335px; /* Ограничиваем максимальную ширину */
-  height: 140px; /* Высота контейнера */
-  gap: 12px; /* Расстояние между элементами */
+  width: 100%;
+  max-width: 335px; 
+  height: 140px; 
+  gap: 12px;
 }
 
 textarea {

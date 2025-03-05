@@ -6,15 +6,8 @@
   </div>
   <div class="rating">
     <div class="stars">
-      <img
-        v-for="star in 5"
-        :key="star"
-        :src="starIcon"
-        @click="setRating(star)"
-        :class="{ active: star <= rating }"
-        class="star"
-        alt="star"
-      />
+      <img v-for="star in 5" :key="star" :src="starIcon" @click="setRating(star)"
+        :class="{ active: star <= rating }" class="star" alt="star" />
     </div>
   </div>
 </template>
@@ -22,7 +15,7 @@
 <script setup>
 import { ref, defineProps } from 'vue';
 
-// Импортируем иконку звезды
+
 import starIcon from '@/assets/star.svg';
 
 const props = defineProps({
@@ -88,8 +81,8 @@ const setRating = (star) => {
   transition: all 0.2s ease;
   filter: grayscale(100%);
   -webkit-tap-highlight-color: transparent;
-  background: none; 
-  box-shadow: none; 
+  background: none;
+  box-shadow: none;
   user-select: none;
   outline: none;
   pointer-events: auto;
@@ -100,8 +93,8 @@ const setRating = (star) => {
 }
 
 .star.active {
-  filter: grayscale(0%); 
-  fill: #7f56d9; 
+  filter: grayscale(0%);
+  fill: #7f56d9;
   background-color: transparent;
 }
 
