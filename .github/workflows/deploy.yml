@@ -8,13 +8,16 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
 
       - name: Install dependencies
         run: npm install
-        
+
       - name: Run unit tests
         run: npm run test:unit  
 
