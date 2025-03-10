@@ -25,9 +25,6 @@
       <div class="swen-text">
         Part of the profit goes to SWEN, By leaving a tip, you take care of nature
       </div>
-      <div class="swen-logo-container">
-        <img src="@/assets/Frame 15485.svg" alt="SWEN Logo" class="swen-logo" />
-      </div>
     </div>
   </header>
 </template>

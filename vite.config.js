@@ -10,8 +10,9 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
-  //server: {
-  //  host: '192.168.178.21', // или укажите конкретный IP вашего компьютера
-  //  port: 3000 // любой доступный порт
- // }
+  test: {
+    globals: true, 
+    environment: 'jsdom', 
+    include: ['tests/unit/**/*.{test,spec}.{js,ts}'], 
+  }
 });

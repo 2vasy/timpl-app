@@ -1,7 +1,6 @@
 <template>
   <div class="tip-input-container">
     <WaiterSlider @waiter-selected="selectedWaiter = $event" />
-    >
     <div class="tip-input">
       <div class="input-container">
         <label for="tip-amount" class="tip-label">Enter amount of tips</label>
@@ -22,7 +21,7 @@
 </template>
 
 <script setup>
-import { ref, watch, defineProps, defineEmits } from 'vue';
+import { ref, watch} from 'vue';
 import WaiterSlider from './WaiterSlider.vue';
 
 

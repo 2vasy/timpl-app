@@ -22,8 +22,6 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits } from 'vue';
-
 
 const props = defineProps({
   amount: {
@@ -40,10 +38,6 @@ const emit = defineEmits(['showSwenPopup']);
 
 
 const handlePayClick = (method) => {
-
-  console.log(`Selected payment method: ${method}`);
-
-о
   emit('showSwenPopup');
 };
 </script>

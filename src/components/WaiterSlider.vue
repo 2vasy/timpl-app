@@ -18,7 +18,7 @@
 <script setup>
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/swiper-bundle.css';
-import { ref, defineEmits } from 'vue';
+import { ref } from 'vue';
 
 const emit = defineEmits(['waiter-selected']);
 const activeIndex = ref(0);
